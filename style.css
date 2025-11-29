@@ -204,3 +204,81 @@ button {
     border: 2px solid #a80000; color: #fff; transition: 0.2s;
 }
 button:hover { background: #a80000; box-shadow: 0 0 20px #a80000; }
+
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto+Mono:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#stats {
+    position: absolute; top: 20px; left: 20px;
+    color: #fff; font-size: 1.5rem; text-shadow: 0 0 5px red;
+}
+
+#sanity-box {
+    position: absolute; bottom: 20px; left: 20px;
+    color: #ff3333; font-size: 1.5rem; font-weight: bold;
+    text-shadow: 0 0 10px red;
+}
+
+#crosshair {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+}
+
+.overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    z-index: 20; color: #ddd; text-align: center;
+}
+
+.hidden { display: none !important; }
+
+.creepy-text {
+    font-family: 'Nosifer', cursive;
+    font-size: 4rem; color: #a80000;
+    text-shadow: 0 0 20px red; margin-bottom: 20px;
+}
+
+.blood-text {
+    font-family: 'Nosifer', cursive;
+    font-size: 6rem; color: red;
+    text-shadow: 0 0 50px red;
+    animation: shake 0.5s infinite;
+}
+
+button {
+    background: #111; border: 2px solid #a80000; color: #fff;
+    padding: 15px 40px; font-size: 1.5rem; font-family: 'Nosifer';
+    cursor: pointer; margin-top: 30px; transition: 0.2s;
+}
+button:hover { background: #a80000; box-shadow: 0 0 30px red; }
+
+input {
+    background: #222; border: 1px solid #555; padding: 15px;
+    color: #fff; font-family: 'Roboto Mono'; width: 250px;
+    font-size: 1.2rem; text-align: center;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

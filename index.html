@@ -3,73 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Corridor: Fixed</title>
+    <title>The Lady's Manor: Horror Edition</title>
     <link rel="stylesheet" href="style.css">
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+        }
+      }
+    </script>
 </head>
 <body>
 
-    <div id="ui-hud">
-        <div class="hud-top">
-            <div class="stat-box">LEVEL <span id="level-num">1</span></div>
-            <div class="stat-box">DOLLS: <span id="doll-count">0</span> / <span id="doll-total">3</span></div>
+    <div id="ui-layer">
+        <div id="stats">
+            <div>LEVEL: <span id="level-display">1</span></div>
+            <div>DOLLS: <span id="dolls-display">0</span> / <span id="dolls-total">5</span></div>
         </div>
-        
-        <div class="sanity-container">
-            <span>SANITY</span>
-            <div class="sanity-bar-bg"><div id="sanity-bar"></div></div>
-        </div>
-
-        <div class="controls-hint">
-            <p>MOUSE: Pan Left/Right | CLICK: Collect Glowing Dolls | SPACE: Flashlight</p>
-        </div>
+        <div id="crosshair">+</div>
+        <div id="sanity-box">HEART RATE: <span id="bpm-display">60</span> BPM</div>
     </div>
 
-    <div id="darkness-overlay"></div>
-    
-    <div id="damage-overlay"></div>
-
-    <div id="game-container">
-        <div id="game-world">
-            <div class="bg-wall"></div>
-            
-            <div class="prop window" style="left: 400px;"></div>
-            <div class="prop painting" style="left: 900px;"></div>
-            <div class="prop door" style="left: 1500px;"></div>
-            <div class="prop clock" style="left: 2100px;"></div>
-            <div class="prop painting" style="left: 2600px;"></div>
-            <div class="prop window" style="left: 3200px;"></div>
-
-            <div id="entity-layer"></div>
-        </div>
+    <div id="start-screen" class="overlay">
+        <h1 class="creepy-text">THE LADY'S MANOR</h1>
+        <p><strong>LOUDER. DARKER. SCARIER.</strong></p>
+        <p>Find the Dolls. Avoid the Lady.</p>
+        <p class="controls">WASD to Move | MOUSE to Look | CLICK to Collect</p>
+        <button id="start-btn">WAKE UP</button>
     </div>
 
-    <div id="start-screen" class="screen">
-        <h1 class="horror-title">THE CORRIDOR</h1>
-        <p class="subtitle">Survive the darkness.</p>
-        <div class="instructions">
-            <p>1. Find the <strong>Glowing Dolls</strong>.</p>
-            <p>2. If you hear a <strong>Heartbeat</strong>, the Lady is near.</p>
-            <p>3. If you see her, <strong>TURN OFF LIGHT (Space)</strong>.</p>
-        </div>
-        <button id="start-btn">START GAME</button>
-    </div>
-
-    <div id="quiz-screen" class="screen hidden">
-        <h2 class="horror-title">LOCKED DOOR</h2>
-        <p class="riddle-text" id="quiz-question">Loading...</p>
-        <div class="quiz-box">
-            <input type="text" id="quiz-answer" placeholder="Answer..." autocomplete="off">
-            <button id="submit-quiz">OPEN</button>
-        </div>
+    <div id="quiz-screen" class="overlay hidden">
+        <h2 class="creepy-text">THE SPIRIT BLOCKS THE WAY</h2>
+        <p id="question-text">Loading...</p>
+        <input type="text" id="quiz-input" placeholder="Answer..." autocomplete="off">
+        <button id="submit-answer">SPEAK</button>
         <p id="quiz-feedback"></p>
     </div>
 
-    <div id="game-over-screen" class="screen hidden">
-        <h1 class="blood-text">YOU DIED</h1>
-        <p id="death-reason">Sanity depleted.</p>
-        <button id="retry-btn">TRY AGAIN</button>
+    <div id="game-over-screen" class="overlay hidden">
+        <h1 class="blood-text">SHE FOUND YOU</h1>
+        <button id="restart-btn">TRY AGAIN</button>
     </div>
 
-    <script src="script.js"></script>
+    <div id="win-screen" class="overlay hidden">
+        <h1 class="creepy-text">ESCAPED</h1>
+        <button id="restart-win-btn">PLAY AGAIN</button>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>
